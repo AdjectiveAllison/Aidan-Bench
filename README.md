@@ -86,7 +86,7 @@ Ensure you have Python installed on your system. This project requires the follo
 
 2. Install the required libraries:
    ```
-   pip install numpy openai colorama retry
+   pip install -r requirements.txt
    ```
 
 3. Set up your API keys:
