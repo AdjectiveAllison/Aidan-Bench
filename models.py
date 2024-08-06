@@ -32,3 +32,14 @@ def embed(text):
     response = client.embeddings.create(
         model="text-embedding-3-large", input=[text])
     return response.data[0].embedding
+
+@lru_cache(maxsize=10000)
+@retry(tries=3)
+def embed_octo(text):
+    client = OpenAI(
+        api_key=os.getenv("OCTO_API_KEY"),
+        base_url="https://text.octoai.run/v1")
+
+    response = client.embeddings.create(
+        model="thenlper/gte-large", input=[text])
+    return response.data[0].embedding
